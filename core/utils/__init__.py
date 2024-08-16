@@ -1,4 +1,4 @@
-import bridge
-import ethtool
-import banner
-import misc
+from . import bridge
+from . import ethtool
+from . import banner
+from . import misc

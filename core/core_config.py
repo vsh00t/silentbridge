@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser
 import os
 
 
@@ -9,7 +9,7 @@ class CoreConfig(object):
         self.path = input_path
         self.hostapd_conf_path = output_path
 
-        self.config = ConfigParser.ConfigParser()
+        self.config = configparser.ConfigParser()
         self.config.read(self.path)
 
     def sections(self):
@@ -42,7 +42,7 @@ class CoreConfig(object):
     def write(self):
 
         with open(self.hostapd_conf_path, 'w') as fd:
-            for key,val in self.items():
+            for key,val in list(self.items()):
                 fd.write('%s=%s\n' % (key,val))
 
     def delete(self, section, setting=None):

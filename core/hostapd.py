@@ -47,9 +47,9 @@ class Hostapd(object):
             self.thread = threading.Thread(target=self.libhostapd.main, args=(argc, argv))
             self.thread.start()
 
-            print
-            print '[hostapd] AP starting...'
-            print
+            print()
+            print('[hostapd] AP starting...')
+            print()
             time.sleep(self.sleep_time)
 
         except KeyboardInterrupt:
@@ -59,18 +59,18 @@ class Hostapd(object):
     def stop(self):
 
 
-        print '[hostapd] Terminating event loop...'
+        print('[hostapd] Terminating event loop...')
         self.libhostapd.eloop_terminate()
 
-        print '[hostapd] Event loop terminated.'
+        print('[hostapd] Event loop terminated.')
         
         if self.thread.is_alive():
         
-            print '[hostapd] Hostapd worker still running... waiting for it to join.'
-            print
+            print('[hostapd] Hostapd worker still running... waiting for it to join.')
+            print()
             self.thread.join(5)
-            print
-            print '[hostapd] Worker joined.'
+            print()
+            print('[hostapd] Worker joined.')
 
-        print '[hostapd] AP disabled.'
-        print
+        print('[hostapd] AP disabled.')
+        print()
